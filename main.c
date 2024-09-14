@@ -4,7 +4,6 @@
 # include <stdio.h>
 sbit Door_Switch =P2^0; // Door  pin
 
-
 unsigned char key1,key,key2;              
 int minutes , seconds,sec,min,i;         
 bit flag=1;                               
@@ -16,12 +15,11 @@ typedef enum {Time_Entered_State ,Door_Status_State, RUN_COUNTER_State} State;  
 
 State current_state=Time_Entered_State;                                          
 
-//main
+//Main function
 void main(void) 
 	{
     LCD_Intialization();                                      
     LCD_ShowString(1, 0, "Oven Controller");                 
-
     Delay(200);
     while (1)                                                 
 			{               
