@@ -10,13 +10,9 @@ sbit R2=P1^6;
 sbit R3=P1^5;
 sbit R4=P1^4;
 
-
-
 void Beep(unsigned int duration)         
 {
     unsigned char i,j,k;
-	
-	
 	for(k=1;k<=duration;k++)    
   { 
 		for(i=0;i<250;i++)            
@@ -26,7 +22,8 @@ void Beep(unsigned int duration)
 		R3=1;
     for(j=0;j<50;j++);
 
-  }Delay(500);
+  }
+Delay(500);
   }
 }
 
@@ -39,10 +36,10 @@ while(1)
 	     if(C1==0)                                       
 			 {  Delay(2000);
 				 while(C1==0)
-				   { Beep(1);  return '7';}
-			     
+				   {
+				     Beep(1);  return '7';
+				   }   
 			 }  
-	      
 			 if(C2==0)                                      
 			 {     Delay(2000);
     				 while(C2==0)
@@ -134,13 +131,9 @@ while(1)
 	 
 	 R4=1;
 }
-
 }
-
-
 char Key1_Pressed ()               
 {  
-        
 	R1=1; R2=1; R3=1; R4=0;                              
 	     if(C1==0)
 			 {   Delay(2000);
@@ -152,9 +145,7 @@ char Key1_Pressed ()
 			 {  Delay(2000);
 				  while(C3==0)
 			    { Beep(1);return '=';}  
-			 }
-		
-	 
+			 } 
 	 R4=1;
 
 
