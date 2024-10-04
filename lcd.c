@@ -16,7 +16,6 @@ void Delay (unsigned int value)
 	   
 	for (j=0; j<value ;j++)
 	{  
-		
 		TH1=0xFC;
 		TL1=0x64;
 		TF1=0;
@@ -33,7 +32,6 @@ void Timmer_Delay (unsigned char k )
 	   
 	for (j=0; j<k ;j++)
 	{  
-		
 		TH1=0x4B;
 		TL1=0xFD;
 		TF1=0;
@@ -45,7 +43,6 @@ void Timmer_Delay (unsigned char k )
 }
 
 //LCD Write Function
-
 void LCD4_write ( unsigned char Value)
   {  
 	
@@ -99,9 +96,6 @@ void LCD_Intialization(void)
  
  
  }
-
-
- 
  int lcd_Pow(int X,int Y)
 {
 	unsigned char i;
@@ -113,7 +107,6 @@ void LCD_Intialization(void)
 	return Result;
 }
 
-
 void LCD_ShowNum(unsigned char Line,unsigned char Column,unsigned int Number,unsigned char Length)
 {
 	unsigned char i;
@@ -124,14 +117,11 @@ void LCD_ShowNum(unsigned char Line,unsigned char Column,unsigned int Number,uns
 	}
 }
 
-
 void LCD_ShowChar(unsigned char Line,unsigned char Column,unsigned char Char)
 {
 	Set_cursor(Line,Column);
 	LCD_Data(Char);
 }
-
-
 
 void LCD_ShowString(unsigned char Line,unsigned char Column,char *String) 
 {
