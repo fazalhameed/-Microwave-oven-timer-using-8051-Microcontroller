@@ -24,8 +24,7 @@ void main(void)
     while (1)                                                 
 			{               
 // STATE MACHINE        
-switch (current_state) 
-					{
+switch (current_state) 					{
 case Time_Entered_State:                                
            LCD_ShowString(2, 0, "EnterTime");    
            Delay(200);
@@ -33,18 +32,17 @@ case Time_Entered_State:
 
  if (flag)                 
 	{
-		for (i = 0; i < 4; i++)    
-    {
+	for (i = 0; i < 4; i++)    
+       {
         input[i] = '0';
      }
-    for (i = 0; i < 4; i++) 
+      for (i = 0; i < 4; i++) 
 	 {
        key = Key_Pressed(); 
     
        // Check if the input key is between 0 and 9
      if (key >= '0' && key <= '9')
-			 {
-     
+	 {
          input[3] = input[2];
          input[2] = input[1];
          input[1] = input[0];
@@ -66,21 +64,21 @@ case Time_Entered_State:
   sprintf(formattedTime, "%02d:%02d", minutes, seconds);    
 
   LCD_ShowString(2, 10, formattedTime);                    
-	    flag = 0;   													 
+       flag = 0;   													 
 													 
       if (input[0] != '0' || input[1] != '0' || input[2] != '0' || input[3] != '0') 
       {
         current_state = Door_Status_State; 
-				}
+      }
      }
-	else
-		{
+       else
+      {
       current_state = Door_Status_State;            
       }
 break;                                                                 
 
 case Door_Status_State:                                          
-	     key1 = Key_Pressed();                                                       
+      key1 = Key_Pressed();                                                       
 
       if (key1 == 'C')                                  
 				{
@@ -91,23 +89,23 @@ case Door_Status_State:
 				Delay(1000);
 		    Beep(10);
         }				
-			else                                                                 
-			{
+	else                                                                 
+	{
         LCD_ClearSecondLine();               
-				LCD_ShowString(2, 0, "Door Close");  
-				Delay(3000);                         
+	LCD_ShowString(2, 0, "Door Close");  
+	Delay(3000);                         
         LCD_ClearSecondLine(); 
         Delay	(1000);										
         current_state = RUN_COUNTER_State;   //Change Stste to Run counter State
-		    Delay	(1000);	
+	Delay	(1000);	
          }
-			}
-				else if (key1 == '=')                          
-				{       
-					flag=1;                             
-		      Delay(250);
+	}
+	else if (key1 == '=')                          
+	{       
+	 flag=1;                             
+	  Delay(250);
           current_state = Time_Entered_State;  
-			    Delay(100);
+	  Delay(100);
 	}										
 break;
 
@@ -122,27 +120,27 @@ case RUN_COUNTER_State:
 						{      
 							
 	//if Counter Run and Door is Open
-				while (Door_Switch == 0)       
+	 while (Door_Switch == 0)       
                     
-					{                                  
-            LCD_ShowString(2, 0, "Door Open");   
-					  Beep(10);                                  
-					 while(Key_Pressed() != 'C');       
-           LCD_ShowString(2, 0, "DoorClose");  
-				   Delay (3000);
-        		LCD_ClearLine(9);								
+	{                                  
+         LCD_ShowString(2, 0, "Door Open");   
+	 Beep(10);                                  
+	 while(Key_Pressed() != 'C');       
+         LCD_ShowString(2, 0, "DoorClose");  
+	 Delay (3000);
+         LCD_ClearLine(9);								
         }
-	// Count Down Counter
-		sec--;                               
+// Count Down Counter
+sec--;                               
 
   if (sec < 0) 
-		{
+ {
      sec = 59;
-      min--;
+     min--;
     }
 
    if (min < 0) 
-			{
+    {
         min = 0;
         sec = 0;
         }
@@ -154,43 +152,41 @@ case RUN_COUNTER_State:
 //if Counter Run and On/Off Button Press
    if (Key1_Pressed() == 'C')             
      {  
-			while(Key_Pressed() != 'C')          
-					{
-						Delay(500);
-				 if(Key1_Pressed() == '=')        
-				   {     
-						 flag=1;                  
-             current_state = Time_Entered_State; break;      
-			}
-	}
-											
- if (flag)                         
-		{
+	while(Key_Pressed() != 'C')          
+	{
+	 Delay(500);
+	 if(Key1_Pressed() == '=')        
+	 {     
+	   flag=1;                  
+           current_state = Time_Entered_State; break;      
+	   }
+	}											
+   if (flag)                         
+   {
        break;                       
   }
-}
-                        
+}                       
 //Count Down reach to zero
-	if (min == 0 && sec == 0)        
+   if (min == 0 && sec == 0)        
     {  
-			flag=1;                                  
+      flag=1;                                  
       current_state = Time_Entered_State; 
-       break;                         
+      break;                         
       }                     
 	}							
-		 }
-		else
-			{        
-				LCD_ClearSecondLine();
-        Delay(100);
- 				LCD_ShowString(2,0, "Invalid Formate");
-		    Beep(10);
-			  Delay(25000);
-			  LCD_ClearSecondLine();
-				flag=1;                                  
-        current_state = Time_Entered_State;
+	 }
+	  else
+	  {        
+	   LCD_ClearSecondLine();
+           Delay(100);
+ 	   LCD_ShowString(2,0, "Invalid Formate");
+	   Beep(10);
+	   Delay(25000);
+	   LCD_ClearSecondLine();
+	   flag=1;                                  
+           current_state = Time_Entered_State;
 					
-			}
+	}
 								
 break;
 
