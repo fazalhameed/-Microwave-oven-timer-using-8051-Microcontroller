@@ -25,7 +25,6 @@ void Delay (unsigned int value)
 		TR1=0;
 	}
 }
-
 void Timmer_Delay (unsigned char k )
 {
  unsigned int j;
@@ -41,7 +40,6 @@ void Timmer_Delay (unsigned char k )
 		TR1=0;
 	}
 }
-
 //LCD Write Function
 void LCD4_write ( unsigned char Value)
   {  
@@ -54,10 +52,8 @@ void LCD4_write ( unsigned char Value)
 		            
 		EN=1;                     
 	  Delay(4);                   
-	  EN=0;                     
-	 
-	}
-	
+	  EN=0;                      
+  }
 // LCD Command Function
 void LCD_Command (unsigned char cmd)
 { 
@@ -91,7 +87,7 @@ void LCD_Intialization(void)
  {      
 	 if(row==1)                                         
 	    { 	LCD_Command(0x80+coloum); }                  
-			else if(row==2)                                 
+	 else if(row==2)                                 
 	    { 	LCD_Command(0xC0+coloum); }                 
  
  
