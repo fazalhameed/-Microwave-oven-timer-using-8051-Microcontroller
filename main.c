@@ -10,7 +10,6 @@ bit flag=1;
 char input[4];                             
 char formattedTime[6] ;                    
 
-
 typedef enum {Time_Entered_State ,Door_Status_State, RUN_COUNTER_State} State;    //STATE MACHINE with Three State
 
 State current_state=Time_Entered_State;                                          
@@ -29,7 +28,6 @@ case Time_Entered_State:
            LCD_ShowString(2, 0, "EnterTime");    
            Delay(200);
            LCD_ShowString(2, 10, "00:00");
-
  if (flag)                 
 	{
 	for (i = 0; i < 4; i++)    
